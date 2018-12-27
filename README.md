@@ -16,7 +16,7 @@ JsonNode jsonNode2 = ...
 ComparisonResult result = comparator.compare(jsonNode1, jsonNode2);
 ```
 
-### Tweak comparison
+### Configure the comparison
 
 * Recursive: to compare both jsons in depth (vs top level)
 * Array comparison: to compare arrays index by index (vs as a single object)
