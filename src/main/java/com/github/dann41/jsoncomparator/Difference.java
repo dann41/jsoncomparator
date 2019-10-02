@@ -1,7 +1,5 @@
 package com.github.dann41.jsoncomparator;
 
-import com.sun.istack.internal.Nullable;
-
 import java.util.Objects;
 
 public class Difference<T> {
@@ -9,7 +7,7 @@ public class Difference<T> {
   private final T from;
   private final T to;
 
-  public static <T> Difference<T> of(@Nullable T from, @Nullable T to) {
+  public static <T> Difference<T> of(T from, T to) {
     return new Difference<>(from, to);
   }
 
