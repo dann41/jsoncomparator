@@ -70,7 +70,66 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.1</version>
             </plugin>
+
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.0</version>
+                <executions>
+                    <!-- Ask JaCoCo to generate a test report from surefire tests -->
+                    <execution>
+                        <id>prepare-code-coverage</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                        <configuration>
+                            <propertyName>surefireArgLine</propertyName>
+                        </configuration>
+                    </execution>
+
+                    <!-- Ask JaCoCo to format test report into browsable HTML -->
+                    <!-- Multi-module builds should include report-aggregate and use the -->
+                    <!-- default outputDirectory. -->
+                    <!-- Single-module builds should exclude report-aggregate and use -->
+                    <!-- the given outputDirectory. -->
+                    <execution>
+                        <id>report-code-coverage</id>
+                        <goals>
+                            <goal>report</goal>
+                            <!-- <goal>report-aggregate</goal> -->
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.reporting.outputDirectory}/jacoco-aggregate</outputDirectory>
+                        </configuration>
+                    </execution>
+
+                    <!-- Make sure we have at least 70% coverage -->
+                    <execution>
+                        <id>verify-test-coverage</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>BUNDLE</element>
+                                    <excludes>
+                                        <exclude>*Mojo</exclude>
+                                    </excludes>
+                                    <limits>
+                                        <limit>
+                                            <counter>INSTRUCTION</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>60%</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
-
 </project>
