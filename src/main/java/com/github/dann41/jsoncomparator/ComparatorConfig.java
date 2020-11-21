@@ -2,7 +2,7 @@ package com.github.dann41.jsoncomparator;
 
 public class ComparatorConfig {
 
-  private static final String SEPARATOR = ".";
+  private static final String DEFAULT_SEPARATOR = ".";
 
   private final boolean recursive;
   private final boolean arrayIncluded;
@@ -41,7 +41,7 @@ public class ComparatorConfig {
     private boolean recursive = true;
     private boolean arrayIncluded = false;
     private boolean concatenateFields = true;
-    private String fieldSeparator = SEPARATOR;
+    private String fieldSeparator = DEFAULT_SEPARATOR;
 
     private ComparatorConfigBuilder() {
     }

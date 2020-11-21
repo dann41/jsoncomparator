@@ -11,13 +11,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasEntry;
 import static org.hamcrest.Matchers.hasKey;
 
-public class JSONComparatorTest {
+public class JsonComparatorTest {
 
-    private JSONComparator jsonComparator;
+    private JsonComparator jsonComparator;
 
     @BeforeEach
     void setUp() {
-        jsonComparator = new JSONComparator();
+        jsonComparator = new JsonComparator();
     }
 
 
@@ -90,10 +90,12 @@ public class JSONComparatorTest {
 
     @Test
     void givenNestedJSONWhenComparingWithoutNestedThenReturnResultIncludingTopLevelDifferences() {
+        JsonComparator jsonComparator = new JsonComparator(
+                ComparatorConfig.aComparatorConfig().withRecursive(false).build()
+        );
         ComparisonResult result = jsonComparator.compare(
                 "{\"greetings\":{\"Spanish\":\"hola\"}}",
-                "{\"greetings\":{\"Spanish\":\"hola!\",\"English\":\"hello\"}}",
-                ComparatorConfig.aComparatorConfig().withRecursive(false).build());
+                "{\"greetings\":{\"Spanish\":\"hola!\",\"English\":\"hello\"}}");
 
         assertThat(result, is(notNullValue()));
         assertThat(result.getAllDiffs().size(), is(1));
