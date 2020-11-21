@@ -1,3 +1,7 @@
+
+[![CircleCI](https://circleci.com/gh/dann41/jsoncomparator.svg?style=shield)](https://circleci.com/gh/dann41/jsoncomparator)
+[![Github](https://github.com/dann41/jsoncomparator/workflows/Java%20CI/badge.svg)]()
+
 # jsoncomparator
 Java library to compare JSON objects
 
