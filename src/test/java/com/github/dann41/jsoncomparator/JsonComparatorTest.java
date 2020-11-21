@@ -1,5 +1,8 @@
 package com.github.dann41.jsoncomparator;
 
+import com.github.dann41.jsoncomparator.config.ComparatorConfig;
+import com.github.dann41.jsoncomparator.result.ComparisonResult;
+import com.github.dann41.jsoncomparator.result.Difference;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package com.github.dann41.jsoncomparator;
+package com.github.dann41.jsoncomparator.config;
 
 public final class ComparatorConfigBuilder {
     private boolean recursive;

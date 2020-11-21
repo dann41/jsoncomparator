@@ -2,6 +2,9 @@ package com.github.dann41.jsoncomparator;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.dann41.jsoncomparator.config.ComparatorConfig;
+import com.github.dann41.jsoncomparator.result.ComparisonResult;
+import com.github.dann41.jsoncomparator.result.SimpleComparisonResult;
 
 import java.io.IOException;
 import java.util.*;

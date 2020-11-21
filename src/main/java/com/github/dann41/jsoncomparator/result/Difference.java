@@ -1,4 +1,4 @@
-package com.github.dann41.jsoncomparator;
+package com.github.dann41.jsoncomparator.result;
 
 import java.util.Objects;
 
