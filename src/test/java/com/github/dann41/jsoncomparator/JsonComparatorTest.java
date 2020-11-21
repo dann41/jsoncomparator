@@ -20,7 +20,7 @@ public class JsonComparatorTest {
 
     @BeforeEach
     void setUp() {
-        jsonComparator = new JsonComparator();
+        jsonComparator = new RecursiveJsonComparator();
     }
 
 
@@ -93,7 +93,7 @@ public class JsonComparatorTest {
 
     @Test
     void givenNestedJSONWhenComparingWithoutNestedThenReturnResultIncludingTopLevelDifferences() {
-        JsonComparator jsonComparator = new JsonComparator(
+        JsonComparator jsonComparator = new RecursiveJsonComparator(
                 ComparatorConfig.aComparatorConfig().withRecursive(false).build()
         );
         ComparisonResult result = jsonComparator.compare(
