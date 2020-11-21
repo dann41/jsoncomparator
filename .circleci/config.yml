@@ -8,12 +8,12 @@ jobs:
       - checkout
       - restore_cache:
           key: jsoncomparator-{{ checksum "pom.xml" }}
-      - run: mvn dependency:go-offline
+      - run: ./mvnw dependency:go-offline
       - save-cache:
           paths:
             - ~/.m2
           key: jsoncomparator-{{ checksum "pom.xml" }}
-      - run: mvn package
+      - run: ./mvnw clean verify package
       - store_test_results:
           path: target/surefire-reports
       - store_artifacts:
