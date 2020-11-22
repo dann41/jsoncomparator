@@ -9,7 +9,7 @@ Java library to compare JSON objects
 
 ### JSON as String comparison
 ```
-JSONComparator comparator = new JSONComparator();
+JsonComparator comparator = new RecursiveJsonComparator();
 ComparisonResult result = comparator.compare("{}", "{}");
 ```
 
@@ -34,8 +34,8 @@ ComparatorConfig config = ComparatorConfig.aComparatorConfig()
     .withFieldSeparator(".")
     .build();
 
-JSONComparator comparator = new JSONComparator();
-ComparisonResult result = comparator.compare("{}", "{}", config);    
+JsonComparator comparator = new RecursiveJsonComparator(config);
+ComparisonResult result = comparator.compare("{}", "{}");    
 ```
 ## The result
 The comparison returns a ComparisonResult object containing all the differences found according to the provided (or default) ComparisonConfig.
