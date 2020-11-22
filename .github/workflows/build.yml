@@ -1,6 +1,12 @@
 name: Java CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
@@ -14,4 +20,4 @@ jobs:
       with:
         java-version: 11
     - name: Build with Maven
-      run: ./mvnw clean verify -B package --file pom.xml
+      run: ./mvnw clean verify package
