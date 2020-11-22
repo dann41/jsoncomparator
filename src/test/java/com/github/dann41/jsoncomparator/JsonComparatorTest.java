@@ -1,5 +1,6 @@
 package com.github.dann41.jsoncomparator;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dann41.jsoncomparator.config.ComparatorConfig;
 import com.github.dann41.jsoncomparator.result.ComparisonResult;
 import com.github.dann41.jsoncomparator.result.Difference;
@@ -23,6 +24,14 @@ public class JsonComparatorTest {
         jsonComparator = new RecursiveJsonComparator();
     }
 
+
+    @Test
+    void givenNullNodesWhenComparingThenReturnEmptyComparisonResult() {
+        ComparisonResult result = jsonComparator.compare((JsonNode) null, null);
+
+        assertThat(result, is(notNullValue()));
+        assertThat(result.getAllDiffs(), is(Collections.emptyMap()));
+    }
 
     @Test
     void givenEmptyStringsWhenComparingThenReturnEmptyComparisonResult() {
