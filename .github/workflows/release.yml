@@ -22,7 +22,7 @@ jobs:
         run: |
           export MVN_ARGS="-DbuildNumberSuffix="
           ./mvnw ${MVN_ARGS} deploy
-          echo "::set-env name=FILENAME::$(mvn ${MVN_ARGS} org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.build.finalName -q -DforceStdout)"
+          echo "FILENAME=$(./mvnw ${MVN_ARGS} org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.build.finalName -q -DforceStdout)" >> $GITHUB_ENV
 
       - name: Create Release
         id: create_release
