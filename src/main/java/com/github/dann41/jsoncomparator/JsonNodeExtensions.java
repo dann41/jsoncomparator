@@ -10,6 +10,7 @@ public class JsonNodeExtensions {
 
     /**
      * Converts a JsonNode of tyoe array into an indexed map.
+     *
      * @param node
      * @return indexed map or empty map in case node is not an array
      */
@@ -26,6 +27,7 @@ public class JsonNodeExtensions {
 
     /**
      * Unwraps the value of a node depending on its type
+     *
      * @param node
      * @return value contained by JsonNode or the node itself it it's a complex type
      */
