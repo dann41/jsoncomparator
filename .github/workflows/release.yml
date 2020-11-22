@@ -18,11 +18,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./mvnw deploy
-      - run: mkdir package && cp target/*.jar package
-      - uses: actions/upload-artifact@v2
-        with:
-          name: Package
-          path: package
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -33,13 +28,9 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
+      - name: Upload JAR
+        uses: jasonetco/upload-to-release@v0.1.1
+        with:
+          args: target/*.jar application/java-archive
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./jsoncomparator.zip
-          asset_name: jsoncomparator.zip
-          asset_content_type: application/zip
