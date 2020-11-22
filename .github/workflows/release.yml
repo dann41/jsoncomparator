@@ -10,14 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+
       - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
           java-version: 11
+
       - name: Build with Maven
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./mvnw deploy
+        run: |
+          export MVN_ARGS="-DbuildNumberSuffix="
+          ./mvnw ${MVN_ARGS} deploy
+          echo "::set-env name=FILENAME::$(mvn ${MVN_ARGS} org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.build.finalName -q -DforceStdout)"
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -28,9 +34,10 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
+
       - name: Upload JAR
         uses: jasonetco/upload-to-release@v0.1.1
         with:
-          args: target/*.jar application/java-archive
+          args: target/${{ env.FILENAME }}.jar application/java-archive
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
