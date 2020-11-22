@@ -6,7 +6,7 @@
 
     <groupId>com.github.dann41</groupId>
     <artifactId>json-comparator</artifactId>
-    <version>0.4.3</version>
+    <version>0.4.4</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
