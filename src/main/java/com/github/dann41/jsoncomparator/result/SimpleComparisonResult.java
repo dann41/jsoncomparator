@@ -9,9 +9,9 @@ import static com.github.dann41.jsoncomparator.JsonNodeExtensions.getNodeValue;
 
 public class SimpleComparisonResult implements ComparisonResult {
 
-    private Map<String, Difference<Object>> updated = new HashMap<>();
-    private Map<String, Difference<Object>> removed = new HashMap<>();
-    private Map<String, Difference<Object>> added = new HashMap<>();
+    private final Map<String, Difference<Object>> updated = new HashMap<>();
+    private final Map<String, Difference<Object>> removed = new HashMap<>();
+    private final Map<String, Difference<Object>> added = new HashMap<>();
 
     public void fieldAdded(String nodeName, JsonNode newNode) {
         added.put(nodeName, Difference.of(null, getNodeValue(newNode)));
